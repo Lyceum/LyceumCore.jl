@@ -6,11 +6,11 @@
 
 @inline function tail(t::Tuple, n::Integer)
     m = length(t) - n
-    ntuple(i -> t[i + m], n)
+    ntuple(i -> t[i+m], n)
 end
 @inline function tail(t::NTuple{L,Any}, ::StaticOrVal{N}) where {L,N}
     M = L - N
-    ntuple(i -> t[i + M], Val(N))
+    ntuple(i -> t[i+M], Val(N))
 end
 @inline tail(t::NTuple{L,Any}) where {L} = tail(t, Val(L - 1))
 
@@ -27,5 +27,7 @@ end
 @pure tuple_prod(T::Type{<:Tuple}) = length(T.parameters) == 0 ? 1 : *(T.parameters...)
 @pure tuple_prod(t::Tuple) = prod(t)
 
-@pure tuple_minimum(T::Type{<:Tuple}) = length(T.parameters) == 0 ? 0 : minimum(tuple(T.parameters...))
+@pure function tuple_minimum(T::Type{<:Tuple})
+    length(T.parameters) == 0 ? 0 : minimum(tuple(T.parameters...))
+end
 @pure tuple_minimum(t::Tuple) = minimum(t)

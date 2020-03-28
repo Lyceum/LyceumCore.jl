@@ -8,4 +8,3 @@ const AbsVec{T} = AbstractVector{T}
 
 const AbsNestedArr{N} = AbstractArray{<:AbstractArray,N}
 const AbsSimilarNestedArr{V,M,N} = AbstractArray{<:AbstractArray{V,M},N}
-
