@@ -3,6 +3,9 @@ uuid = "e5bd5517-2193-49f0-ba9c-d5a8508cb639"
 authors = ["Colin Summers", "The Contributors of LyceumCore"]
 version = "0.1.0"
 
+[deps]
+StaticNumbers = "c5e4b96a-f99f-5557-8ed2-dc63ef9b5131"
+
 [compat]
 julia = "1.4"
 
