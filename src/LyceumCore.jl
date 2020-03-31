@@ -9,6 +9,7 @@ export Maybe
 export TupleN
 export AbsArr, AbsMat, AbsVec
 export AbsNestedArr, AbsSimilarNestedArr
+export StaticOrVal
 include("aliases.jl")
 
 export front, tail, tuple_split, tuple_length, tuple_prod, tuple_minimum

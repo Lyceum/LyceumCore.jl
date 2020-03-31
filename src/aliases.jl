@@ -8,3 +8,5 @@ const AbsVec{T} = AbstractVector{T}
 
 const AbsNestedArr{N} = AbstractArray{<:AbstractArray,N}
 const AbsSimilarNestedArr{V,M,N} = AbstractArray{<:AbstractArray{V,M},N}
+
+const StaticOrVal{X} = Union{Static{X}, Val{X}}
