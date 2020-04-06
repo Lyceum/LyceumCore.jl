@@ -1,7 +1,7 @@
 name = "LyceumCore"
 uuid = "e5bd5517-2193-49f0-ba9c-d5a8508cb639"
 authors = ["Colin Summers", "The Contributors of LyceumCore"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 StaticNumbers = "c5e4b96a-f99f-5557-8ed2-dc63ef9b5131"
