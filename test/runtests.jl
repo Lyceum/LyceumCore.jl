@@ -1,6 +1,3 @@
-using LyceumCore
-using Test
+include("preamble.jl")
 
-@testset "LyceumCore.jl" begin
-    # Write your own tests here.
-end
+@includetests "LyceumCore.jl"

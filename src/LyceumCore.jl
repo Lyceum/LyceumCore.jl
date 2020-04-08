@@ -4,6 +4,8 @@ using Base: @pure, @_inline_meta
 
 using StaticNumbers
 
+export @mustimplement, propertytype, argerror
+include("util.jl")
 
 export Maybe
 export TupleN
@@ -13,6 +15,6 @@ export StaticOrVal
 include("aliases.jl")
 
 export front, tail, tuple_split, tuple_length, tuple_prod, tuple_minimum
-include("util.jl")
+include("tuple.jl")
 
 end # module
