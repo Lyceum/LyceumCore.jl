@@ -8,23 +8,24 @@ argerror(s::AbstractString) = throw(ArgumentError(s))
 
 
 
-function genpath(path::String; force::Bool = false, sep = '_')
+function genpath(path::AbstractString; force::Bool = false, sep = '_')
     if force
         rm(path, force = true, recursive = true)
         return path
     elseif ispath(path)
+        parts = splitpath(path)
+        root = parts[1:length(parts)-1]
+        base = parts[end]
         if isfile(path)
-            dir, file = splitdir(path)
-            file, ext = splitext(file)
-            f = i -> joinpath(dir, "$(file)$(sep)$(i)$(ext)")
+            filename, ext = splitext(base)
+            f = i -> joinpath(root..., "$(filename)$(sep)$(i)$(ext)")
         elseif isdir(path)
-            parts = splitpath(path)
-            root = parts[1:length(parts)-1]
-            base = parts[end]
             f = i -> joinpath(root..., "$(base)$(sep)$(i)")
+        else
+            error("Not a file or directory: $path")
         end
         i = 1
-        while isfile(f(i))
+        while ispath(f(i))
             i += 1
         end
         return f(i)
