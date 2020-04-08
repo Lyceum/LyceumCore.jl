@@ -1,7 +1,7 @@
 module TestUtil
 
 include("preamble.jl")
-using LyceumCore: genpath, with_tempdir
+using LyceumCore: genpath
 
 @testset "mkgoodpath" begin
     with_tempdir() do dir

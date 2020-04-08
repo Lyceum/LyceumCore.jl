@@ -7,7 +7,6 @@ end
 argerror(s::AbstractString) = throw(ArgumentError(s))
 
 
-with_tempdir(f) = mktempdir(dir -> cd(() -> f(dir), dir))
 
 function genpath(path::String; force::Bool = false, sep = '_')
     if force
