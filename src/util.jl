@@ -6,7 +6,10 @@ end
 
 argerror(s::AbstractString) = throw(ArgumentError(s))
 
-function mkgoodpath(path::String; force::Bool = false, sep = '_')
+
+with_tempdir(f) = mktempdir(dir -> cd(() -> f(dir), dir))
+
+function genpath(path::String; force::Bool = false, sep = '_')
     if force
         rm(path, force = true, recursive = true)
         return path
@@ -14,18 +17,18 @@ function mkgoodpath(path::String; force::Bool = false, sep = '_')
         if isfile(path)
             dir, file = splitdir(path)
             file, ext = splitext(file)
-            genpath = i -> joinpath(dir, "$(file)$(sep)$(i)$(ext)")
+            f = i -> joinpath(dir, "$(file)$(sep)$(i)$(ext)")
         elseif isdir(path)
             parts = splitpath(path)
             root = parts[1:length(parts)-1]
             base = parts[end]
-            genpath = i -> joinpath(root..., "$(base)$(sep)$(i)")
+            f = i -> joinpath(root..., "$(base)$(sep)$(i)")
         end
         i = 1
-        while isfile(genpath(i))
+        while isfile(f(i))
             i += 1
         end
-        return genpath(i)
+        return f(i)
     else
         return path
     end

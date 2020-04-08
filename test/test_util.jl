@@ -1,16 +1,22 @@
 module TestUtil
 
 include("preamble.jl")
+using LyceumCore: genpath, with_tempdir
 
 @testset "mkgoodpath" begin
-    mktempdir() do path
-        mkpath(joinpath(path, "foo"))
-        mkpath(joinpath(path, "foo", "bar.txt"))
-        mkpath(joinpath(path, "foo", "baz.txt"))
-        mkpath(joinpath(path, "foo", "baz_1.txt"))
-        @info walkdir(path)
+    with_tempdir() do dir
+        mkpath("dir1/dir2")
+        touch("f1.txt")
+        touch(joinpath("dir1", "f2.txt"))
+        touch(joinpath("dir1", "dir2", "f3.txt"))
+        touch(joinpath("dir1", "dir2", "f3_1.txt"))
+
+        @test genpath("dir1/dir2") == "dir1/dir2_1"
+        @test genpath("f1.txt", force=true) == "f1.txt"
+        @test !isfile("f1.txt")
+        @test genpath("dir1/dir2/f3.txt") == "dir1/dir2/f3_2.txt"
+        @test genpath("dir1/dir2/f3.txt", sep="___") == "dir1/dir2/f3___1.txt"
     end
-    @test true
 end
 
 end # module
