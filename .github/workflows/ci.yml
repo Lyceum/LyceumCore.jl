@@ -29,6 +29,7 @@ jobs:
         run: |
           julia -e 'using Pkg; Registry.add(RegistrySpec(url = "https://github.com/Lyceum/LyceumRegistry.git"))'
           julia -e 'using Pkg; Registry.add(RegistrySpec(url = "https://github.com/JuliaRegistries/General.git"))'
+        shell: bash
       - name: Install Run.jl
         run: |
           unset JULIA_PROJECT
