@@ -11,11 +11,11 @@ using LyceumCore: genpath
         touch(joinpath("dir1", "dir2", "f3.txt"))
         touch(joinpath("dir1", "dir2", "f3_1.txt"))
 
-        @test genpath("dir1/dir2") == "dir1/dir2_1"
+        @test genpath("dir1/dir2") == joinpath("dir1", "dir2_1")
         @test genpath("f1.txt", force=true) == "f1.txt"
         @test !isfile("f1.txt")
-        @test genpath("dir1/dir2/f3.txt") == "dir1/dir2/f3_2.txt"
-        @test genpath("dir1/dir2/f3.txt", sep="___") == "dir1/dir2/f3___1.txt"
+        @test genpath("dir1/dir2/f3.txt") == joinpath("dir1", "dir2", "f3_2.txt")
+        @test genpath("dir1/dir2/f3.txt", sep="___") == joinpath("dir1", "dir2", "f3___1.txt")
     end
 end
 
