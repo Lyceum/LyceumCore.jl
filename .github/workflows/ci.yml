@@ -12,7 +12,7 @@ jobs:
     name: Julia ${{ matrix.julia-version }} - ${{ matrix.os }} - ${{ matrix.julia-arch }}
     runs-on: ${{ matrix.os }}
     env:
-      JULIA_NUM_THREADS: 2
+      JULIA_NUM_THREADS: 1
     strategy:
       fail-fast: false
       matrix:
@@ -39,7 +39,7 @@ jobs:
       - name: Install Run.jl
         run: |
           unset JULIA_PROJECT
-          julia -e 'using Pkg; pkg"add https://github.com/tkf/Run.jl"
+          julia -e 'using Pkg; pkg"add https://github.com/tkf/Run.jl"'
       - name: Prepare environment
         run: julia -e 'using Run; Run.prepare("test")'
       - name: Run tests
