@@ -270,8 +270,8 @@ uuid = "db31fed1-ca1e-4084-8a49-12fae1996a55"
 version = "0.2.1"
 
 [[LyceumCore]]
-deps = ["StaticNumbers"]
-git-tree-sha1 = "28ace31199a3f42d6f0257921710babc95cbe306"
+deps = ["LyceumDevTools", "StaticNumbers"]
+path = ".."
 uuid = "e5bd5517-2193-49f0-ba9c-d5a8508cb639"
 version = "0.1.1"
 
