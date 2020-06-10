@@ -8,4 +8,6 @@ LyceumDevTools = "fd23256c-5a67-41c4-8f5a-c8cf5526e505"
 StaticNumbers = "c5e4b96a-f99f-5557-8ed2-dc63ef9b5131"
 
 [compat]
+LyceumDevTools = "0.5"
+StaticNumbers = "0.3"
 julia = "1.3"
